@@ -7,6 +7,7 @@
 #include "lcddraw.h"
 #include "shape.h"
 #include "libTimer.h"
+#include "stateAdv_assembly.h"
 
 char bState=4;
 
@@ -75,7 +76,15 @@ void manFig()
   }
   redrawScreen = 1;
 }
-  
+
+void clearBlack(){
+  clearScreen(COLOR_BLACK);
+}
+
+void drawFace(){
+  drawChar11x16(50,70,'$',COLOR_RED,COLOR_WHITE);
+}
+
 void off()
 {
   red_on=0;
@@ -99,7 +108,7 @@ void borders(){
 
 }
 static char manSt=0;
-void state_advance()
+/*void state_advance()
 {
   switch(bState){
   case 0:
@@ -114,15 +123,17 @@ void state_advance()
     break;
 
   case 2:
-    clearScreen(COLOR_BLACK);
-    drawChar11x16(50,70,'$',COLOR_RED,COLOR_WHITE);
+    //clearScreen(COLOR_BLACK);
+    clearBlack();
+    // drawChar11x16(50,70,'$',COLOR_RED,COLOR_WHITE);
+    drawFace();
     bState = 4;
   case 3:
     buzzer_set_period(0);
     off();
     bState = 4;
   }
-}
+  }*/
 
   //static char sState=0;
 

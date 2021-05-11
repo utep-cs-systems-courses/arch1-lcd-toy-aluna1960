@@ -8,7 +8,7 @@
 #include "lcddraw.h"
 #include "shape.h"
 #include <sr.h>
-#include "stateAdv_assembly.h"
+//#include "stateAdv_assembly.h"
 #define LED_GREEN BIT6
 
 
@@ -21,24 +21,29 @@ void wdt_c_handler()
 {
   static int secCount = 0;
   static int drawCnt = 0;
+
   if(bState == 2){
+  
     if(drawCnt == 250){      
       redrawScreen = 1;
       drawCnt = 0;
-      
     }
-    
     drawCnt++;
-    state_advance();
-  }
-  else{
-    secCount = 0;
-    state_advance();
     
   }
-  secCount++;
-  /*
+  state_advance();
+    
+    
+    //state_advance();
   
+  //else{
+    //secCount = 0;
+    //state_advance();
+    
+  //}
+  //secCount++;
+  
+  /*
 
   switch(bState){
   case 2:
@@ -92,12 +97,14 @@ int main(void) {
   while (1) {           /* forever */
     if(redrawScreen){
       redrawScreen=0;
-      if(bState==1){
-	state_advance();
-      }
-      P1OUT &= ~LED_GREEN;/* green off */
-      or_sr(0x10);/**< CPU OFF */
-      P1OUT |= LED_GREEN;/* green on */
+      //if(bState==1){
+      state_advance();
+	//}
     }
+    
+    P1OUT &= ~LED_GREEN;/* green off */
+    or_sr(0x10);/**< CPU OFF */
+    P1OUT |= LED_GREEN;/* green on */
+    
   }
 }

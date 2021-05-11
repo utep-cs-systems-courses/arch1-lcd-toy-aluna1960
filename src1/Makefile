@@ -23,7 +23,7 @@ all: lastOne.elf
 
 #additional rules for files
 
-lastOne.elf: ${COMMON_OBJECTS} main.o wdt_handler.o buzzer.o p2switches.o stateMachines.o libp2sw.a led.o ../lib/libTimer.a
+lastOne.elf: ${COMMON_OBJECTS} main.o stateAdv_assembly.o stateAdv.o wdt_handler.o buzzer.o p2switches.o stateMachines.o libp2sw.a led.o ../lib/libTimer.a
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd -L../lib
 
 
@@ -32,5 +32,5 @@ load: lastOne.elf
 	make clean
 
 clean:
-	rm -f *.o *.elf *~ *# *.a
+	rm -f *.elf *~ *# *.a
 

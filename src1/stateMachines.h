@@ -1,13 +1,13 @@
 #ifndef stateMachine_included
 #define stateMachine_included
 
-void state_advance();
-void siren();
-//void dim_rg_led();
-void led_switch(char note);
-void alternate_led();
-void drawCorners();
-void litCop();
+
+void manFig();
+void borders();
+void clearBlack();
+void off();
+void drawFace();
+
 
 extern short redrawScreen;
 static char state = 0;
